@@ -1,3 +1,13 @@
+const sunAudio = document.getElementById('SunAudio');
+
+function playSunAudio() {
+    sunAudio.play();
+}
+
+const sunElement = document.getElementById('Sun');
+sunElement.addEventListener('click', playSunAudio);
+
+
 celestialBodies = {
     Sun: new CelestialBody({
         name: "Sun",
@@ -28,6 +38,7 @@ celestialBodies = {
             radius: 500.
         }
     }),
+    
     Mercury: new CelestialBody({
         name: "Mercury",
         radius: 3.8256,
@@ -50,6 +61,7 @@ celestialBodies = {
             diffuse: {map: "res/mercury/diffuse.jpg"},
             bump: {map: "res/mercury/bump.jpg", height: 0.}
         }
+        
     }),
     Venus: new CelestialBody({
         name: "Venus",
@@ -117,6 +129,7 @@ celestialBodies = {
             atmosphereStrength: 1.5,
             sunsetStrength: 1.0
         }
+        
     }),
     Comet: new CelestialBody({
         name: "Comet",
