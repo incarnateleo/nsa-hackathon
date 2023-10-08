@@ -287,6 +287,7 @@ function initGui() {
             cameraCopy(switchCamera, trackCamera[curBody]);
             setTween(curBody, nextBody);
             tween.start();
+            playPlanetAudio(nextBody);
         }
     });
     control = new function () {
@@ -424,3 +425,81 @@ function animate() {
     stats.update();
 }
 
+
+
+var planetAudios = {
+    Mercury: new Audio('res/prompt/audio-nasa-1/audio nasa/mercury/final.wav'),
+    Venus:   new Audio('res/prompt/audio-nasa-1/audio nasa/venus/final.wav'),
+    Earth:   new Audio('res/prompt/audio-nasa-1/audio nasa/earth/final.wav'),
+    Comet:   new Audio('res/prompt/elvis.mp3'),
+    Mars:    new Audio('res/prompt/audio-nasa-1/audio nasa/mars/final.wav'),
+    Jupiter:    new Audio('res/prompt/audio-nasa-1/audio nasa/jupiter/final.wav'),
+    Saturn:    new Audio('res/prompt/audio-nasa-1/audio nasa/saturn/final.wav'),
+    Uranus:    new Audio('res/prompt/audio-nasa-1/audio nasa/Uranus/final.wav'),
+    Neptune:    new Audio('res/prompt/audio-nasa-1/audio nasa/neptune/final.wav'),
+    Pluto:    new Audio('res/prompt/audio-nasa-1/audio nasa/pluto/final.wav'),
+
+
+    // Add more planets and their audio files as needed
+};
+
+var audioDelay = 2000; // 2 seconds delay
+
+var isAudioPlaying = false;
+var currentAudio;
+
+function playPlanetAudio(planetName) {
+    if (!isAudioPlaying) {
+        isAudioPlaying = true;
+        currentAudio = planetAudios[planetName];
+        setTimeout(function () {
+            if (currentAudio) {
+                currentAudio.play();
+            }
+        }, audioDelay);
+    } else {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0; // Reset audio to the beginning
+        }
+        currentAudio = planetAudios[planetName];
+        setTimeout(function () {
+            if (currentAudio) {
+                currentAudio.play();
+            }
+        }, audioDelay);
+    }
+}
+
+// Add event listeners to each planet element
+document.getElementById('MercuryElement').addEventListener('click', function () {
+    playPlanetAudio('Mercury');
+});
+
+document.getElementById('VenusElement').addEventListener('click', function () {
+    playPlanetAudio('Venus');
+});
+document.getElementById('EarthElement').addEventListener('click', function () {
+    playPlanetAudio('Earth');
+});
+document.getElementById('CometElement').addEventListener('click', function () {
+    playPlanetAudio('Comet');
+});
+document.getElementById('MarsElement').addEventListener('click', function () {
+    playPlanetAudio('Mars');
+});
+document.getElementById('JupiterElement').addEventListener('click', function () {
+    playPlanetAudio('Jupiter');
+});
+document.getElementById('SaturnElement').addEventListener('click', function () {
+    playPlanetAudio('Saturn');
+});
+document.getElementById('UranusElement').addEventListener('click', function () {
+    playPlanetAudio('Uranus');
+});
+document.getElementById('NeptuneElement').addEventListener('click', function () {
+    playPlanetAudio('Neptune');
+});
+document.getElementById('PlutoElement').addEventListener('click', function () {
+    playPlanetAudio('Pluto');
+});

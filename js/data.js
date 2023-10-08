@@ -1,11 +1,3 @@
-const sunAudio = document.getElementById('SunAudio');
-
-function playSunAudio() {
-    sunAudio.play();
-}
-
-const sunElement = document.getElementById('Sun');
-sunElement.addEventListener('click', playSunAudio);
 
 
 celestialBodies = {
@@ -36,7 +28,9 @@ celestialBodies = {
         halo: {
             color: new THREE.Vector3(1.0, 0.8, 0.4),
             radius: 500.
+            
         }
+        
     }),
     
     Mercury: new CelestialBody({
@@ -558,3 +552,4 @@ celestialBodies = {
         },
     }),
 }
+
